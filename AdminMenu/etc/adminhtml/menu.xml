@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <!-- Top-level menu -->
+        <add id="Advik_AdminMenu::main_menu"
+             title="Admin Menu"
+             module="Advik_AdminMenu"
+             sortOrder="0"
+             resource="Advik_AdminMenu::main_menu" />
+
+        <!-- Submenu item -->
+        <add id="Advik_AdminMenu::Setup"
+             title="Setup"
+             module="Advik_AdminMenu"
+             sortOrder="100"
+             parent="Advik_AdminMenu::main_menu"
+             translate="title"
+             resource="Advik_AdminMenu::Setup"/>
+
+
+        <add id="Advik_AdminMenu::import"
+             title="Import Data1"
+             module="Advik_AdminMenu"
+             sortOrder="20"
+             parent="Advik_AdminMenu::Setup"
+             action="adminmenu/import/index"
+             resource="Advik_AdminMenu::import"/>
+
+        <add id="Advik_AdminMenu::export"
+             title="Export Data"
+             module="Advik_AdminMenu"
+             sortOrder="30"
+             parent="Advik_AdminMenu::Setup"
+             action="adminmenu/export/index"
+             resource="Advik_AdminMenu::export"/>
+    </menu>
+</config>
