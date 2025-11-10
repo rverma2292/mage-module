@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <!-- Top-level menu -->
+        <add id="Advik_EmpGrid::employee"
+             title="Employee List"
+             module="Advik_EmpGrid"
+             sortOrder="40"
+             parent="Advik_AdminMenu::Setup"
+             action="employee/index/index"
+             resource="Advik_EmpGrid::employee" />
+    </menu>
+</config>

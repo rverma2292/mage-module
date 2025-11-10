@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="employee_grid_listing_data_source" xsi:type="string">Advik\EmpGrid\Model\ResourceModel\Employee\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Advik\EmpGrid\Model\ResourceModel\Employee\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">employee</argument>
+            <argument name="resourceModel" xsi:type="string">Advik\EmpGrid\Model\ResourceModel\Employee</argument>
+        </arguments>
+    </virtualType>
+</config>
