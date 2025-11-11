@@ -36,7 +36,6 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
 	 */
 	public function execute()
 	{
-
 		/** @var \Magento\Framework\Controller\Result\Json $resultJson */
 		$resultJson = $this->jsonFactory->create();
 		$error = false;
