@@ -7,7 +7,7 @@
         <add id="Advik_AdminMenu::main_menu"
              title="Admin Menu"
              module="Advik_AdminMenu"
-             sortOrder="0"
+             sortOrder="10"
              resource="Advik_AdminMenu::main_menu" />
 
         <!-- Submenu item -->
