@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <!-- Required to define preference for BlogRepository -->
+    <preference for="Advik\BlogApi\Api\BlogRepositoryInterface"
+                type="Advik\BlogApi\Model\BlogRepository"/>
+    <!-- Required -->
+    <preference for="Advik\BlogApi\Api\Data\BlogInterface"
+                type="Advik\BlogApi\Model\Blog"/>
+
+    <!-- Required for Repository getList() method  -->
+    <preference for="Advik\BlogApi\Api\Data\BlogSearchResultsInterface"
+              type="Magento\Framework\Api\SearchResults"/>
+    <!-- OR
+    <preference for="Advik\BlogApi\Api\Data\BlogSearchResultsInterface"
+                type="Advik\BlogApi\Model\Data\BlogSearchResults"/>-->
+
+
+</config>
