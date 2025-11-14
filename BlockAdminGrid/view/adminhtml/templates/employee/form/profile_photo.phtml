@@ -1,0 +1,70 @@
+<?php
+/** @var $block \Advik\BlockAdminGrid\Block\Adminhtml\Employee\Form\Renderer\ProfilePhoto */
+$element = $block->getElement();
+$model = $block->getModel();
+$imageUrl = '';
+if ($model && $model->getEmployeeId() && $model->getProfilePhoto()) {
+	$imageUrl = $block->getMediaUrl($model->getProfilePhoto());
+}
+?>
+<div class="admin__field field field-profile_photo  with-addon" data-ui-id="blockadmingrid-employee-edit-form-fieldset-element-form-field-profile-photo">
+	<label class="label admin__field-label" for="<?= $element->getHtmlId() ?>"
+	       data-ui-id="blockadmingrid-employee-edit-form-fieldset-element-file-resume-file-label">
+		<span><?= $block->escapeHtml($element->getLabel()) ?></span>
+	</label>
+
+	<div class="admin__field-control control">
+		<div id="profile-photo-wrapper" style="position:relative; display:inline-block;">
+			<img id="profile-photo-preview"
+			     src="<?= $imageUrl ?>"
+			     width="80"
+			     height="80"
+			     style="border:1px solid #ccc; border-radius:4px; <?= $imageUrl ? '' : 'display:none;' ?> margin-bottom:5px;" />
+			<span id="remove-photo-icon"
+			      title="Remove Image"
+			      style="cursor:pointer; position:absolute; top:-6px; right:-6px; background:#fff;
+                         border:1px solid #ccc; border-radius:50%; padding:2px 5px; font-size:12px;
+                         <?= $imageUrl ? '' : 'display:none;' ?>">✖</span>
+			<input type="hidden" id="profile-photo-delete" name="profile_photo[delete]" value="0" />
+		</div>
+
+		<!-- File input just below image -->
+		<div id="profile-photo-input" style="margin-top:6px;">
+			<?= $element->getElementHtml() ?>
+		</div>
+	</div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const input = document.querySelector("input[name='profile_photo']");
+        const preview = document.getElementById("profile-photo-preview");
+        const removeIcon = document.getElementById("remove-photo-icon");
+        const deleteField = document.getElementById("profile-photo-delete");
+
+        if (input) {
+            input.addEventListener("change", function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.style.display = "block";
+                        removeIcon.style.display = "inline";
+                        deleteField.value = "0";
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+
+        if (removeIcon) {
+            removeIcon.addEventListener("click", function() {
+                preview.src = "";
+                preview.style.display = "none";
+                removeIcon.style.display = "none";
+                deleteField.value = "1";
+                if (input) input.value = "";
+            });
+        }
+    });
+</script>
