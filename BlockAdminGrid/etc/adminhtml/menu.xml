@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<menu>
+    <add
+        id="Advik_BlockAdminGrid::employee"
+        title="Employee Grid (Block)"
+        module="Advik_BlockAdminGrid"
+        sortOrder="40"
+        action="blockadmingrid/employee/index"
+        parent="Advik_AdminMenu::Setup"
+        resource="Advik_BlockAdminGrid::employee"
+    />
+</menu>
+</config>
