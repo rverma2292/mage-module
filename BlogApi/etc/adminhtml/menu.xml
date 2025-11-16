@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <!-- Top-level menu -->
+        <add id="Advik_BlogApi::blog"
+             title="Blogs"
+             module="Advik_BlogApi"
+             sortOrder="50"
+             parent="Advik_AdminMenu::Setup"
+             action="adminblog/index/index"
+             resource="Advik_BlogApi::blog" />
+    </menu>
+</config>

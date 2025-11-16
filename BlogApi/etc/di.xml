@@ -14,5 +14,19 @@
     <preference for="Advik\BlogApi\Api\Data\BlogSearchResultsInterface"
                 type="Advik\BlogApi\Model\Data\BlogSearchResults"/>-->
 
-
+    <!-- Admin Grid  -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_grid_listing_data_source" xsi:type="string">Advik\BlogApi\Model\ResourceModel\Blog\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Advik\BlogApi\Model\ResourceModel\Blog\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">custom_blog</argument>
+            <argument name="resourceModel" xsi:type="string">Advik\BlogApi\Model\ResourceModel\Blog</argument>
+        </arguments>
+    </virtualType>
+    <!-- /Admin Grid  -->
 </config>

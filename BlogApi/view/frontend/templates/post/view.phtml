@@ -1,0 +1,9 @@
+<?php
+/**
+ * @var \Advik\BlogApi\Block\Post\View $block
+ */
+?>
+<?php $post = $block->getPost(); ?>
+
+<h2><?= $post->getContentHeading() ?></h2>
+<div><?= $post->getContent() ?></div>
