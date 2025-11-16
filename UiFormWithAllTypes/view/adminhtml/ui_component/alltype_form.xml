@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">alltype_form.alltype_form_data_source</item>
+            <item name="deps" xsi:type="string">alltype_form.alltype_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Employee Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">alltype_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <!--<buttons>
+            <button name="save" class="Advik\EmpGrid\Block\Adminhtml\Page\Edit\SaveButton"/>
+            <button name="delete" class="Advik\EmpGrid\Block\Adminhtml\Page\Edit\DeleteButton"/>
+            <button name="reset" class="Advik\EmpGrid\Block\Adminhtml\Page\Edit\ResetButton"/>
+            <button name="back" class="Advik\EmpGrid\Block\Adminhtml\Page\Edit\BackButton"/>
+        </buttons>-->
+        <namespace>alltype_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>alltype_form.alltype_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="alltype_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Advik\UiFormWithAllTypes\Model\FormDataProvider</argument>
+            <argument name="name" xsi:type="string">alltype_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">blog_id</argument>
+            <argument name="requestFieldName" xsi:type="string">blog_id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="employee/index/save"/>
+            <!--<validateUrl path="path/to/validate_form_data_controller"/>-->
+        </settings>
+    </dataSource>
+
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">General Form</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+
+        <!-- Text Input -->
+        <field name="title" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Blog Title</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="max_text_length" xsi:type="number">255</item>
+                    </item>
+                    <item name="placeholder" xsi:type="string" translate="true">Enter Blog Title</item>
+                    <item name="notice" xsi:type="string" translate="true">This title appears on frontend</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- Textarea -->
+        <field name="content" sortOrder="20" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Content</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="min_text_length" xsi:type="number">10</item>
+                    </item>
+                    <item name="rows" xsi:type="number">10</item>
+                    <item name="placeholder" xsi:type="string" translate="true">Enter Blog Content</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- WYSIWYG Editor -->
+        <field name="description" sortOrder="30" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="source" xsi:type="string">blog</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- Select -->
+        <field name="status" sortOrder="40" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="options" xsi:type="array">
+                        <item name="1" xsi:type="array">
+                            <item name="value" xsi:type="number">1</item>
+                            <item name="label" xsi:type="string" translate="true">Enabled</item>
+                        </item>
+                        <item name="0" xsi:type="array">
+                            <item name="value" xsi:type="number">0</item>
+                            <item name="label" xsi:type="string" translate="true">Disabled</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- MultiSelect -->
+        <field name="categories" sortOrder="50" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Categories</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="options" xsi:type="array">
+                        <item name="news" xsi:type="array">
+                            <item name="value" xsi:type="string">news</item>
+                            <item name="label" xsi:type="string" translate="true">News</item>
+                        </item>
+                        <item name="updates" xsi:type="array">
+                            <item name="value" xsi:type="string">updates</item>
+                            <item name="label" xsi:type="string" translate="true">Updates</item>
+                        </item>
+                        <item name="events" xsi:type="array">
+                            <item name="value" xsi:type="string">events</item>
+                            <item name="label" xsi:type="string" translate="true">Events</item>
+                        </item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- Date -->
+        <field name="publish_date" sortOrder="60" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Publish Date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- Checkbox -->
+        <field name="featured" sortOrder="70" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Featured</item>
+                    <item name="dataType" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="prefer`Checked`" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- File Uploader -->
+        <field name="image" sortOrder="80" formElement="fileUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Blog Image</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="uiformwithalltypes/blog/upload"/>
+                    </item>
+                    <item name="source" xsi:type="string">blog</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="author_id" sortOrder="90" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Author</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">blog</item>
+                    <item name="options" xsi:type="object">Advik\UiFormWithAllTypes\Model\Config\AuthorOptions</item>
+                </item>
+            </argument>
+        </field>
+
+
+
+
+    </fieldset>
+</form>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <!-- Top-level menu -->
+        <add id="Advik_UiFormWithAllTypes::uiform"
+             title="UiForm"
+             module="Advik_UiFormWithAllTypes"
+             sortOrder="60"
+             parent="Advik_AdminMenu::Setup"
+             action="uiform/index/edit"
+             resource="Advik_UiFormWithAllTypes::uiform" />
+    </menu>
+</config>
