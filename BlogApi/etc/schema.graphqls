@@ -1,0 +1,54 @@
+type BlogPost {
+    post_id: Int
+    title: String
+    content: String
+    identifier: String
+}
+
+type BlogPostSearchResult {
+    items: [BlogPost]
+    total_count: Int
+}
+
+extend type Query {
+    blogPosts (pageSize: Int = 10, currentPage: Int = 1): BlogPostSearchResult
+    @resolver(class: "Advik\\BlogApi\\Model\\Resolver\\BlogPosts")
+
+    blogPostById (id: Int): BlogPost
+    @resolver(class: "Advik\\BlogApi\\Model\\Resolver\\BlogPostById")
+}
+
+type Mutation {
+    createBlog(input: createBlogInput): createBlogOutput
+    @resolver(class: "Advik\\BlogApi\\Model\\Resolver\\CreateBlog")
+
+    updateBlog(input: BlogPostUpdateInput): BlogPostUpdateOutput
+    @resolver(class: "Advik\\BlogApi\\Model\\Resolver\\UpdateBlogPost")
+
+}
+
+input createBlogInput {
+    title: String
+    identifier: String!
+    content: String
+    content_heading: String
+}
+
+type createBlogOutput {
+    success: Boolean
+    message: String
+    post_id: Int
+}
+
+input BlogPostUpdateInput {
+    post_id: Int!
+    title: String
+    content: String
+    identifier: String
+}
+
+type BlogPostUpdateOutput {
+    success: Boolean
+    message: String
+    post_id: Int
+}

@@ -29,4 +29,10 @@
         </arguments>
     </virtualType>
     <!-- /Admin Grid  -->
+
+    <type name="Magento\QuoteGraphQl\Model\Resolver\CartTotalQuantity">
+        <plugin name="advik_cart_total_quantity_plugin_one"
+                type="Advik\BlogApi\Plugin\CartTotalQuantityPlugin" sortOrder="10"/>
+    </type>
+
 </config>
