@@ -1,0 +1,50 @@
+<?php
+/**
+ * @var \Advik\CustomWidget\Block\Widget\Blogs $block
+ */
+?>
+
+<?php if($block->getData('posts')): ?>
+	<h2 class='posts'><?php echo $block->getData('posts'); ?></h2>
+	<p>This is sample widget. Perform your code here.</p>
+<?php endif; ?>
+
+<?php $blogs = $block->getBlogs(); ?>
+
+<?php if (count($blogs)): ?>
+	<div class="owl-carousel blog-carousel">
+		<?php foreach ($blogs as $blog): ?>
+			<div class="item">
+				<h3><?= ucfirst($blog->getTitle()); ?></h3>
+			</div>
+		<?php endforeach; ?>
+	</div>
+
+	<script type="text/javascript">
+        require(['jquery', 'owlcarousel'], function($){
+            $('.blog-carousel').owlCarousel({
+                slideSpeed : 200,
+                paginationSpeed : 800,
+
+                //Autoplay
+                autoPlay : false,
+                goToFirst : true,
+                goToFirstSpeed : 1000,
+
+                // Navigation
+                navigation : true,
+                navigationText : ["prev","next"],
+                pagination : true,
+                paginationNumbers: true,
+
+                // Responsive
+                responsive: true,
+                items : 5,
+                itemsDesktop : [1199,4],
+                itemsDesktopSmall : [980,3],
+                itemsTablet: [768,2],
+                itemsMobile : [479,1]
+            });
+        });
+	</script>
+<?php endif; ?>
