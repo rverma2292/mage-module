@@ -20,9 +20,18 @@
                                                                 <!--<item name="simple" xsi:type="array"> "simple" should be unique. Otherwise it will override the existing node -->
                                                                 <item name="simple" xsi:type="array">
                                                                     <!-- Advik_Payment/js/view/payment/simple.js This should be js file -->
-                                                                    <item name="component" xsi:type="string">Advik_Payment/js/view/payment/simple</item>
+                                                                    <item name="component" xsi:type="string">Advik_Payment/js/view/payment/ccform</item>
                                                                     <item name="methods" xsi:type="array">
                                                                         <item name="simple" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="mypayment" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Advik_Payment/js/view/payment/mypayment</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="mypayment" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
                                                                         </item>
                                                                     </item>

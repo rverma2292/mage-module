@@ -8,7 +8,7 @@ use Magento\Framework\Exception\LocalizedException;
 class Simple extends AbstractMethod
 {
 	protected $_code = 'simple';
-	protected $_isOffline = true;
+	protected $_isOffline = false;
 	protected $_canAuthorize = true;
 
 	protected $_isGateway = true;
@@ -50,10 +50,27 @@ class Simple extends AbstractMethod
 	 */
 	public function authorize(\Magento\Payment\Model\InfoInterface $payment, $amount)
 	{
-		if (!$this->canAuthorize()) {
-			throw new LocalizedException(__('The authorize action is not available.'));
+		$ccNumber = $payment->getAdditionalInformation('cc_number');
+		$ccCvv = $payment->getAdditionalInformation('cc_cid');
+		$msg = "CC Number: ".$ccNumber." CVV: ".$ccCvv . " Authorize called\n";
+		file_put_contents(BP . '/var/log/test_auth.log', $msg, FILE_APPEND);
+		// Dummy condition
+		if ($ccNumber === '4111111111111111' && $ccCvv === '123') {
+			// success
+			$transactionId = 'DUMMY-' . rand(100000,999999);
+
+			$payment->setTransactionId($transactionId);
+			$payment->setIsTransactionClosed(false);
+
+			return $this;
 		}
-		return $this;
+		throw new \Magento\Framework\Exception\LocalizedException(
+			__('Payment Declined: Invalid dummy card.')
+		);
+//		if (!$this->canAuthorize()) {
+//			throw new LocalizedException(__('The authorize action is not available.'));
+//		}
+//		return $this;
 	}
 
 	/**
@@ -87,6 +104,17 @@ class Simple extends AbstractMethod
 		if (!$this->canRefund()) {
 			throw new LocalizedException(__('The refund action is not available.'));
 		}
+		return $this;
+	}
+
+	public function assignData(\Magento\Framework\DataObject $data){
+		parent::assignData($data);
+		$additionalData = $data->getData('additional_data');
+		$ccNumber = $additionalData['cc_number'] ?? null;
+		$ccCvv = $additionalData['cc_cid'] ?? null;
+
+		$this->getInfoInstance()->setAdditionalInformation('cc_number', $ccNumber);
+		$this->getInfoInstance()->setAdditionalInformation('cc_cid', $ccCvv);
 		return $this;
 	}
 }
