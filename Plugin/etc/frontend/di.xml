@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="change_product_name_testing"
+                type="Advik\Plugin\Plugin\ProductPlugin"
+                sortOrder="10"
+                disabled="false" />
+
+        <plugin name="change_product_name_prefix"
+                type="Advik\Plugin\Plugin\ProductPrefixPlugin"
+                sortOrder="11"
+                disabled="false" />
+    </type>
+
+    <!-- Code for custom Logger   -->
+    <virtualType name="AdvikCustomLogHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/advik_custom.log</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="AdvikCustomLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">AdvikLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">AdvikCustomLogHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Advik\Plugin\Plugin\ProductPlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">AdvikCustomLogger</argument>
+        </arguments>
+    </type>
+
+</config>
