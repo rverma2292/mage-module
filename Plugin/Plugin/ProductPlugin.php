@@ -2,9 +2,11 @@
 
 namespace Advik\Plugin\Plugin;
 
+use AllowDynamicProperties;
 use Magento\Catalog\Model\Product;
 use Psr\Log\LoggerInterface;
 
+#[AllowDynamicProperties]
 class ProductPlugin
 {
 	/**
