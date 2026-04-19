@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="address">
+        <!-- Override for Billing Address -->
+        <container name="customer_default_billing_address_wrapper">
+            <component name="customer_default_billing_address_content">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">Advik_LearnPatch/default-address</item>
+                    </item>
+                </argument>
+            </component>
+        </container>
+        <!-- Override for Shipping Address -->
+        <container name="customer_default_shipping_address_wrapper">
+            <component name="customer_default_shipping_address_content">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">Advik_LearnPatch/default-address</item>
+                    </item>
+                </argument>
+            </component>
+        </container>
+    </fieldset>
+</form>

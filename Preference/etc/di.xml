@@ -1,0 +1,12 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <preference for="Advik\Preference\Api\NotifyInterface"
+                type="Advik\Preference\Model\Email" />
+
+    <type name="Advik\Preference\Controller\Index\Index">
+        <arguments>
+            <argument name="notifier" xsi:type="object">Advik\Preference\Model\Sms</argument>
+        </arguments>
+    </type>
+
+</config>

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <simple>
+                <active>1</active>
+                <model>Advik\Payment\Model\Payment\Simple</model>
+                <order_status>pending</order_status>
+                <title>Simple</title>
+                <allowspecific>0</allowspecific>
+                <can_capture>1</can_capture>
+                <can_authorize>1</can_authorize>
+                <can_void>1</can_void>
+                <can_refund>1</can_refund>
+                <payment_action>authorize</payment_action>
+                <is_initialize_needed>0</is_initialize_needed>
+            </simple>
+
+            <mypayment>
+                <active>1</active>
+                <model>Advik\Payment\Model\Payment\Mypayment</model>
+                <order_status>pending</order_status>
+                <title>Custom Credit Card</title>
+                <allowspecific>0</allowspecific>
+                <is_gateway>1</is_gateway>
+                <can_capture>1</can_capture>
+                <can_authorize>1</can_authorize>
+                <can_void>1</can_void>
+                <can_refund>1</can_refund>
+
+                <cctypes>VI,MC,AE,DI</cctypes>
+            </mypayment>
+        </payment>
+    </default>
+</config>
