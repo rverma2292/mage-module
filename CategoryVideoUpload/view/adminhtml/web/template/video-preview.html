@@ -1,0 +1,43 @@
+<div class="file-uploader-summary">
+    <div class="file-uploader-preview image-uploader-preview">
+        <a class="image-uploader-preview-link" attr="href: $parent.getFilePreview($file)" target="_blank">
+            <div class="file-uploader-spinner image-uploader-spinner"></div>
+            <!-- ko if: $file.type && $file.type.indexOf('video') !== -1 -->
+            <video
+                style="max-width: 100%; max-height: 100%"
+                controls
+                attr="
+                    src: $parent.getFilePreview($file),
+                    title: $file.name">
+            </video>
+            <!-- /ko -->
+            <!-- ko ifnot: $file.type && $file.type.indexOf('video') !== -1 -->
+            <img
+                class="preview-image"
+                tabindex="0"
+                event="load: $parent.onPreviewLoad.bind($parent)"
+                attr="
+                    src: $parent.getFilePreview($file),
+                    alt: $file.name,
+                    title: $file.name">
+            <!-- /ko -->
+        </a>
+
+        <div class="actions">
+            <button
+                type="button"
+                class="action-remove"
+                data-role="delete-button"
+                attr="title: $t('Delete file')"
+                disable="$parent.disabled"
+                click="$parent.removeFile.bind($parent, $file)">
+                <span translate="'Delete file'"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="file-uploader-filename" text="$file.name"></div>
+    <div class="file-uploader-meta">
+        <text args="$parent.formatSize($file.size)"></text>
+    </div>
+</div>

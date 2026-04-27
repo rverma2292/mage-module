@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Advik\CategoryVideoUpload\Model\VideoUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category_video</argument>
+            <argument name="basePath" xsi:type="string">catalog/category</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="mp4" xsi:type="string">mp4</item>
+                <item name="mpeg" xsi:type="string">mpeg</item>
+                <item name="avi" xsi:type="string">avi</item>
+                <item name="mov" xsi:type="string">mov</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="video/mp4" xsi:type="string">video/mp4</item>
+                <item name="video/mpeg" xsi:type="string">video/mpeg</item>
+                <item name="video/x-msvideo" xsi:type="string">video/x-msvideo</item>
+                <item name="video/quicktime" xsi:type="string">video/quicktime</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
